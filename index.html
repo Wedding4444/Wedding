@@ -4,110 +4,131 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Pratim & Debjani's Wedding Menu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      font-family: 'Georgia', serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to bottom, #002366, #ffffff);
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to bottom, #fcefee, #ffffff);
       color: #333;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
+      padding-bottom: 2rem;
     }
 
     header {
-      background-color: #002366;
+      background-color: #a83279;
       color: #fff;
       width: 100%;
       text-align: center;
       padding: 2rem 1rem;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
     }
 
     header h1 {
-      font-size: 2.2rem;
-      margin: 0;
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      margin-bottom: 0.2rem;
     }
 
     header p {
-      font-size: 1.1rem;
-      margin-top: 0.5rem;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
     }
 
-    .info {
-      margin-top: 1rem;
+    .info p {
       font-size: 0.95rem;
-      color: #eee;
+      color: #fcefee;
     }
 
     main {
       background-color: #fff;
       border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      padding: 1.5rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      padding: 2rem;
       max-width: 600px;
       width: 95%;
-      margin: 1.5rem auto;
+      margin-top: 2rem;
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     h2 {
-      color: #002366;
+      color: #a83279;
       text-align: center;
-      font-size: 1.8rem;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
     }
 
     .menu-section {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.8rem;
     }
 
     .menu-section h3 {
       color: #d2691e;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 0.25rem;
-      margin-bottom: 0.5rem;
-      font-size: 1.2rem;
+      border-bottom: 2px solid #f0c0a0;
+      padding-bottom: 0.3rem;
+      margin-bottom: 0.8rem;
+      font-size: 1.4rem;
     }
 
     ul {
       list-style: none;
-      padding: 0;
-      margin: 0;
+      padding-left: 0;
     }
 
     li {
-      padding: 0.3rem 0;
-      font-size: 1.05rem;
+      padding: 0.4rem 0;
+      font-size: 1.1rem;
+      position: relative;
+      padding-left: 1.2rem;
+    }
+
+    li::before {
+      content: "🌸";
+      position: absolute;
+      left: 0;
     }
 
     footer {
-      margin-top: auto;
+      margin-top: 2rem;
       text-align: center;
-      padding: 1rem;
       font-size: 0.9rem;
-      color: #fff;
+      color: #777;
     }
 
     @media (max-width: 480px) {
       header h1 {
-        font-size: 1.8rem;
+        font-size: 2.2rem;
+      }
+
+      header p {
+        font-size: 1rem;
       }
 
       main {
-        padding: 1rem;
+        padding: 1.5rem;
       }
 
       h2 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
       }
 
       .menu-section h3 {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
       }
 
       li {
@@ -119,14 +140,15 @@
 <body>
   <header>
     <h1>Pratim & Debjani</h1>
-    <p>Thank you for being part of our Special day</p>
+    <p>Thank you for joining our special day!</p>
     <div class="info">
       <p>5th December | Alonkar Lodge, Kamarpara, Chinsurah</p>
     </div>
   </header>
 
   <main>
-    <h2>Serving Menu</h2>
+    <h2>Wedding Menu</h2>
+
     <div class="menu-section">
       <h3>Main Course</h3>
       <ul>
@@ -145,12 +167,8 @@
         <li>Ice Cream (stall)</li>
         <li>Paan</li>
         <li>Pass Pass</li>
-        
-        
       </ul>
     </div>
-
-    
 
     <div class="menu-section">
       <h3>Stall</h3>
@@ -161,7 +179,6 @@
         <li>Crispy Baby Corn</li>
         <li>Mocktail</li>
         <li>Ice Cream</li>
-        
       </ul>
     </div>
   </main>
@@ -171,18 +188,3 @@
   </footer>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
