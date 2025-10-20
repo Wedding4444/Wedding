@@ -51,9 +51,8 @@ header p { font-size: 1.1rem; margin-top: 0.5rem; }
 
 .info { 
   margin-top: 1rem; 
-  font-size: 0.85rem; 
+  font-size: 0.85rem; /* smaller text for this specific line */
   color: #eee; 
-  line-height: 1.4; 
 }
 
 main {
@@ -97,17 +96,8 @@ footer {
   margin-top: auto;
   text-align: center;
   padding: 1rem;
-  font-size: 0.9rem;
-  color: #fff;
-}
-
-.footer-note {
-  color: #fff;
-  text-align: center;
   font-size: 0.85rem;
-  margin-bottom: 0.5rem;
-  padding: 0 1rem;
-  line-height: 1.4;
+  color: #fff;
 }
 
 @media (max-width: 480px) {
@@ -166,16 +156,12 @@ footer {
   </div>
 </main>
 
-<div class="footer-note">
-  <p>Thank you for sharing in the joy of our first meal as a married couple. Cheers to love and laughter!</p>
-</div>
-
 <footer>
-  &copy; 2025 Pratim & Debjani. All rights reserved.
+  <p>Thank you for sharing in the joy of our first meal as a married couple. Cheers to love and laughter!</p>
+  <p>&copy; 2025 Pratim & Debjani. All rights reserved.</p>
 </footer>
 
 <script>
-// fireworks animation (unchanged)
 const canvas = document.getElementById('fireworks');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
