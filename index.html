@@ -27,7 +27,7 @@
       width: 100%; 
       height: 100%; 
       pointer-events: none; 
-      z-index: 1;
+      z-index: 9999; /* top layer */
     }
 
     header {
@@ -36,8 +36,6 @@
       width: 100%;
       text-align: center;
       padding: 2rem 1rem;
-      position: relative;
-      z-index: 2;
     }
 
     header h1 { font-size: 2.2rem; margin: 0; }
@@ -52,8 +50,6 @@
       max-width: 600px;
       width: 95%;
       margin: 1.5rem auto;
-      position: relative;
-      z-index: 2;
     }
 
     h2 { color: #002366; text-align: center; font-size: 1.8rem; }
@@ -87,8 +83,6 @@
       padding: 1rem;
       font-size: 0.9rem;
       color: #fff;
-      position: relative;
-      z-index: 2;
     }
 
     @media (max-width: 480px) {
@@ -168,7 +162,6 @@
         this.y = y;
         this.targetY = targetY;
         this.speed = random(2,4);
-        this.particles = [];
         this.exploded = false;
       }
       update(){
@@ -187,7 +180,7 @@
       draw(){
         if(!this.exploded){
           ctx.beginPath();
-          ctx.arc(this.x,this.y,2,'0','2*Math.PI');
+          ctx.arc(this.x,this.y,2,0,Math.PI*2);
           ctx.fillStyle = 'white';
           ctx.fill();
         }
@@ -220,27 +213,35 @@
       }
     }
 
+    let startTime = Date.now();
+
     function animate(){
-      ctx.fillStyle = 'rgba(0,0,0,0.1)';
-      ctx.fillRect(0,0,canvas.width,canvas.height);
+      const elapsed = (Date.now() - startTime)/1000;
 
-      if(Math.random()<0.03){
-        fireworks.push(new Firework(random(50,canvas.width-50),canvas.height,random(100,canvas.height/2)));
+      // stop fireworks after 3 seconds
+      if(elapsed < 3){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+
+        if(Math.random()<0.05){
+          fireworks.push(new Firework(random(50,canvas.width-50),canvas.height,random(100,canvas.height/2)));
+        }
+
+        fireworks.forEach((f,index)=>{
+          f.update();
+          f.draw();
+          if(f.exploded) fireworks.splice(index,1);
+        });
+
+        particles.forEach((p,index)=>{
+          p.update();
+          p.draw();
+          if(p.alpha <= 0) particles.splice(index,1);
+        });
+
+        requestAnimationFrame(animate);
+      } else {
+        canvas.style.display = 'none'; // hide canvas after 3 seconds
       }
-
-      fireworks.forEach((f,index)=>{
-        f.update();
-        f.draw();
-        if(f.exploded) fireworks.splice(index,1);
-      });
-
-      particles.forEach((p,index)=>{
-        p.update();
-        p.draw();
-        if(p.alpha <= 0) particles.splice(index,1);
-      });
-
-      requestAnimationFrame(animate);
     }
 
     animate();
