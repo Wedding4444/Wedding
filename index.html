@@ -35,7 +35,7 @@ header {
   color: #fff;
   width: 100%;
   text-align: center;
-  padding: 2rem 1rem;
+  padding: 2rem 1rem 1rem 1rem;
   position: relative;
   z-index: 2;
 }
@@ -47,12 +47,18 @@ header h1 {
   display: inline-block;
 }
 
-header p { font-size: 1.1rem; margin-top: 0.5rem; }
+header p {
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
 
-.info { 
-  margin-top: 1rem; 
-  font-size: 0.85rem; /* smaller text for this specific line */
-  color: #eee; 
+.sub-info {
+  background-color: #002366;
+  color: #eee;
+  text-align: center;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 main {
@@ -115,10 +121,11 @@ footer {
 <header>
   <h1 id="title">Pratim & Debjani</h1>
   <p>Thank you for being part of our Special day</p>
-  <div class="info">
-    <p>Every dish on this menu was chosen with love. So please enjoy the food—it was the most expensive part of the wedding. Eat slowly and savor our debt!</p>
-  </div>
 </header>
+
+<div class="sub-info">
+  <p>Every dish on this menu was chosen with love. So please enjoy the food—it was the most expensive part of the wedding. Eat slowly and savor our debt!</p>
+</div>
 
 <main>
   <h2>Serving Menu</h2>
