@@ -1,255 +1,268 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Pratim & Debjani's Wedding Menu</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Pratim & Debjani's Wedding Menu</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body {
-      font-family: 'Georgia', serif;
-      background: linear-gradient(to bottom, #002366, #ffffff);
-      color: #333;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      overflow-x: hidden;
-      overflow-y: auto;
-    }
+body {
+  font-family: 'Georgia', serif;
+  background: linear-gradient(to bottom, #002366, #ffffff);
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
 
-    canvas { 
-      position: fixed; 
-      top: 0; 
-      left: 0; 
-      width: 100%; 
-      height: 100%; 
-      pointer-events: none; 
-      z-index: 9999; /* top layer */
-    }
+canvas { 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  pointer-events: none; 
+  z-index: 9999; /* on top */
+}
 
-    header {
-      background-color: #002366;
-      color: #fff;
-      width: 100%;
-      text-align: center;
-      padding: 2rem 1rem;
-    }
+header {
+  background-color: #002366;
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  padding: 2rem 1rem;
+  position: relative;
+  z-index: 2;
+}
 
-    header h1 { font-size: 2.2rem; margin: 0; }
-    header p { font-size: 1.1rem; margin-top: 0.5rem; }
-    .info { margin-top: 1rem; font-size: 0.95rem; color: #eee; }
+header h1 {
+  font-size: 2.2rem;
+  margin: 0;
+  position: relative;
+  display: inline-block;
+}
 
-    main {
-      background-color: #fff;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      padding: 1.5rem;
-      max-width: 600px;
-      width: 95%;
-      margin: 1.5rem auto;
-    }
+header p { font-size: 1.1rem; margin-top: 0.5rem; }
+.info { margin-top: 1rem; font-size: 0.95rem; color: #eee; }
 
-    h2 { color: #002366; text-align: center; font-size: 1.8rem; }
+main {
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  padding: 1.5rem;
+  max-width: 600px;
+  width: 95%;
+  margin: 1.5rem auto;
+  position: relative;
+  z-index: 2;
+}
 
-    .menu-section { margin-bottom: 1.5rem; }
-    .menu-section h3 {
-      color: #d2691e;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 0.25rem;
-      margin-bottom: 0.5rem;
-      font-size: 1.2rem;
-    }
+h2 { color: #002366; text-align: center; font-size: 1.8rem; }
 
-    ul { list-style: none; padding-left: 0; margin: 0; }
-    li {
-      position: relative;
-      padding-left: 1.5rem;
-      margin-bottom: 0.3rem;
-      font-size: 1.05rem;
-    }
-    li::before {
-      content: "●";
-      position: absolute;
-      left: 0;
-      color: #d2691e;
-    }
+.menu-section { margin-bottom: 1.5rem; }
+.menu-section h3 {
+  color: #d2691e;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
 
-    footer {
-      margin-top: auto;
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-      color: #fff;
-    }
+ul { list-style: none; padding-left: 0; margin: 0; }
+li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.3rem;
+  font-size: 1.05rem;
+}
+li::before {
+  content: "●";
+  position: absolute;
+  left: 0;
+  color: #d2691e;
+}
 
-    @media (max-width: 480px) {
-      header h1 { font-size: 1.8rem; }
-      main { padding: 1rem; }
-      h2 { font-size: 1.5rem; }
-      .menu-section h3 { font-size: 1.1rem; }
-      li { font-size: 1rem; }
-    }
-  </style>
+footer {
+  margin-top: auto;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+@media (max-width: 480px) {
+  header h1 { font-size: 1.8rem; }
+  main { padding: 1rem; }
+  h2 { font-size: 1.5rem; }
+  .menu-section h3 { font-size: 1.1rem; }
+  li { font-size: 1rem; }
+}
+</style>
 </head>
 <body>
-  <canvas id="fireworks"></canvas>
+<canvas id="fireworks"></canvas>
 
-  <header>
-    <h1>Pratim & Debjani</h1>
-    <p>Thank you for being part of our Special day</p>
-    <div class="info">
-      <p>5th December | Alonkar Lodge, Kamarpara, Chinsurah</p>
-    </div>
-  </header>
+<header>
+  <h1 id="title">Pratim & Debjani</h1>
+  <p>Thank you for being part of our Special day</p>
+  <div class="info">
+    <p>5th December | Alonkar Lodge, Kamarpara, Chinsurah</p>
+  </div>
+</header>
 
-  <main>
-    <h2>Serving Menu</h2>
-    <div class="menu-section">
-      <h3>Main Course</h3>
-      <ul>
-        <li>Chicken Drumstick</li>
-        <li>Salad & Sauce</li>
-        <li>Rumali Roti</li>
-        <li>Keema Chana Masala / Chana Paneer</li>
-        <li>Plain Rice</li>
-        <li>Bhetki Paturi / Chhenar Paturi</li>
-        <li>Pulao</li>
-        <li>Mutton Kosha / Chicken Kosha / Mach / Chhenar Kaliya</li>
-        <li>Chutney</li>
-        <li>Papad</li>
-        <li>Cream Chop</li>
-        <li>Sandesh</li>
-        <li>Ice Cream (stall)</li>
-        <li>Paan</li>
-        <li>Pass Pass</li>
-      </ul>
-    </div>
+<main>
+  <h2>Serving Menu</h2>
+  <div class="menu-section">
+    <h3>Main Course</h3>
+    <ul>
+      <li>Chicken Drumstick</li>
+      <li>Salad & Sauce</li>
+      <li>Rumali Roti</li>
+      <li>Keema Chana Masala / Chana Paneer</li>
+      <li>Plain Rice</li>
+      <li>Bhetki Paturi / Chhenar Paturi</li>
+      <li>Pulao</li>
+      <li>Mutton Kosha / Chicken Kosha / Mach / Chhenar Kaliya</li>
+      <li>Chutney</li>
+      <li>Papad</li>
+      <li>Cream Chop</li>
+      <li>Sandesh</li>
+      <li>Ice Cream (stall)</li>
+      <li>Paan</li>
+      <li>Pass Pass</li>
+    </ul>
+  </div>
 
-    <div class="menu-section">
-      <h3>Stall</h3>
-      <ul>
-        <li>Coffee</li>
-        <li>Chicken Kabab</li>
-        <li>Fish Finger</li>
-        <li>Crispy Baby Corn</li>
-        <li>Mocktail</li>
-        <li>Ice Cream</li>
-      </ul>
-    </div>
-  </main>
+  <div class="menu-section">
+    <h3>Stall</h3>
+    <ul>
+      <li>Coffee</li>
+      <li>Chicken Kabab</li>
+      <li>Fish Finger</li>
+      <li>Crispy Baby Corn</li>
+      <li>Mocktail</li>
+      <li>Ice Cream</li>
+    </ul>
+  </div>
+</main>
 
-  <footer>
-    &copy; 2025 Pratim & Debjani. All rights reserved.
-  </footer>
+<footer>
+  &copy; 2025 Pratim & Debjani. All rights reserved.
+</footer>
 
-  <script>
-    const canvas = document.getElementById('fireworks');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+<script>
+const canvas = document.getElementById('fireworks');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-    let fireworks = [];
-    let particles = [];
+let fireworks = [];
+let particles = [];
+let sparkles = [];
 
-    function random(min,max){ return Math.random()*(max-min)+min; }
+function random(min,max){ return Math.random()*(max-min)+min; }
 
-    class Firework {
-      constructor(x, y, targetY){
-        this.x = x;
-        this.y = y;
-        this.targetY = targetY;
-        this.speed = random(2,4);
-        this.exploded = false;
-      }
-      update(){
-        if(this.y > this.targetY){
-          this.y -= this.speed;
-        } else if(!this.exploded){
-          this.explode();
-          this.exploded = true;
-        }
-      }
-      explode(){
-        for(let i=0;i<30;i++){
-          particles.push(new Particle(this.x,this.y));
-        }
-      }
-      draw(){
-        if(!this.exploded){
-          ctx.beginPath();
-          ctx.arc(this.x,this.y,2,0,Math.PI*2);
-          ctx.fillStyle = 'white';
-          ctx.fill();
-        }
-      }
+class Firework {
+  constructor(x, y, targetY){
+    this.x = x;
+    this.y = y;
+    this.targetY = targetY;
+    this.speed = random(2,4);
+    this.exploded = false;
+  }
+  update(){
+    if(this.y > this.targetY) this.y -= this.speed;
+    else if(!this.exploded) {
+      this.explode();
+      this.exploded = true;
     }
-
-    class Particle {
-      constructor(x,y){
-        this.x = x;
-        this.y = y;
-        this.speed = random(1,5);
-        this.angle = random(0, Math.PI*2);
-        this.gravity = 0.05;
-        this.alpha = 1;
-        this.color = `hsl(${random(0,360)},100%,50%)`;
-      }
-      update(){
-        this.speed *= 0.98;
-        this.x += Math.cos(this.angle)*this.speed;
-        this.y += Math.sin(this.angle)*this.speed + this.gravity;
-        this.alpha -= 0.02;
-      }
-      draw(){
-        ctx.globalAlpha = this.alpha;
-        ctx.beginPath();
-        ctx.arc(this.x,this.y,2,0,Math.PI*2);
-        ctx.fillStyle = this.color;
-        ctx.fill();
-        ctx.globalAlpha = 1;
-      }
+  }
+  explode(){
+    for(let i=0;i<30;i++) particles.push(new Particle(this.x,this.y));
+  }
+  draw(){
+    if(!this.exploded){
+      ctx.beginPath();
+      ctx.arc(this.x,this.y,2,0,Math.PI*2);
+      ctx.fillStyle='white';
+      ctx.fill();
     }
+  }
+}
 
-    let startTime = Date.now();
+class Particle {
+  constructor(x,y){
+    this.x = x;
+    this.y = y;
+    this.speed=random(1,5);
+    this.angle=random(0,Math.PI*2);
+    this.gravity=0.05;
+    this.alpha=1;
+    this.color=`hsl(${random(0,360)},100%,50%)`;
+  }
+  update(){
+    this.speed*=0.98;
+    this.x+=Math.cos(this.angle)*this.speed;
+    this.y+=Math.sin(this.angle)*this.speed+this.gravity;
+    this.alpha-=0.02;
+  }
+  draw(){
+    ctx.globalAlpha=this.alpha;
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,2,0,Math.PI*2);
+    ctx.fillStyle=this.color;
+    ctx.fill();
+    ctx.globalAlpha=1;
+  }
+}
 
-    function animate(){
-      const elapsed = (Date.now() - startTime)/1000;
+// sparkle effect for title
+class Sparkle {
+  constructor(x,y){
+    this.x=x+random(-80,80);
+    this.y=y+random(-10,10);
+    this.alpha=1;
+    this.size=random(1,3);
+  }
+  update(){ this.alpha-=0.03; }
+  draw(){
+    ctx.globalAlpha=this.alpha;
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+    ctx.fillStyle='gold';
+    ctx.fill();
+    ctx.globalAlpha=1;
+  }
+}
 
-      // stop fireworks after 3 seconds
-      if(elapsed < 3){
-        ctx.clearRect(0,0,canvas.width,canvas.height);
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
 
-        if(Math.random()<0.05){
-          fireworks.push(new Firework(random(50,canvas.width-50),canvas.height,random(100,canvas.height/2)));
-        }
+  // fireworks
+  if(Math.random()<0.05) fireworks.push(new Firework(random(50,canvas.width-50),canvas.height,random(100,canvas.height/2)));
+  fireworks.forEach((f,i)=>{ f.update(); f.draw(); if(f.exploded) fireworks.splice(i,1); });
+  particles.forEach((p,i)=>{ p.update(); p.draw(); if(p.alpha<=0) particles.splice(i,1); });
 
-        fireworks.forEach((f,index)=>{
-          f.update();
-          f.draw();
-          if(f.exploded) fireworks.splice(index,1);
-        });
+  // title sparkles
+  const title = document.getElementById('title');
+  const rect = title.getBoundingClientRect();
+  if(Math.random()<0.1) sparkles.push(new Sparkle(rect.left+rect.width/2, rect.top+rect.height/2));
+  sparkles.forEach((s,i)=>{ s.update(); s.draw(); if(s.alpha<=0) sparkles.splice(i,1); });
 
-        particles.forEach((p,index)=>{
-          p.update();
-          p.draw();
-          if(p.alpha <= 0) particles.splice(index,1);
-        });
+  requestAnimationFrame(animate);
+}
 
-        requestAnimationFrame(animate);
-      } else {
-        canvas.style.display = 'none'; // hide canvas after 3 seconds
-      }
-    }
+animate();
 
-    animate();
-
-    window.addEventListener('resize', ()=>{
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    });
-  </script>
+window.addEventListener('resize', ()=>{
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+</script>
 </body>
 </html>
