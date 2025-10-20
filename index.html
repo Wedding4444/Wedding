@@ -27,7 +27,7 @@ canvas {
   width: 100%; 
   height: 100%; 
   pointer-events: none; 
-  z-index: 9999; /* on top */
+  z-index: 9999;
 }
 
 header {
@@ -48,14 +48,7 @@ header h1 {
 }
 
 header p { font-size: 1.1rem; margin-top: 0.5rem; }
-
-.info { 
-  margin-top: 1rem; 
-  font-size: 0.85rem; 
-  color: #eee; 
-  text-align: center; 
-  line-height: 1.4; 
-}
+.info { margin-top: 1rem; font-size: 0.85rem; color: #eee; line-height: 1.4; }
 
 main {
   background-color: #fff;
@@ -102,6 +95,15 @@ footer {
   color: #fff;
 }
 
+.footer-note {
+  color: #fff;
+  text-align: center;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+  padding: 0 1rem;
+  line-height: 1.4;
+}
+
 @media (max-width: 480px) {
   header h1 { font-size: 1.8rem; }
   main { padding: 1rem; }
@@ -118,12 +120,7 @@ footer {
   <h1 id="title">Pratim & Debjani</h1>
   <p>Thank you for being part of our Special day</p>
   <div class="info">
-    <p>
-      Every dish on this menu was chosen with love. So please enjoy the food—it was the most expensive part of the wedding. Eat slowly and savor our debt!
-    </p>
-    <p style="margin-top: 0.5rem;">
-      Thank you for sharing in the joy of our first meal as a married couple. Cheers to love and laughter!
-    </p>
+    <p>Every dish on this menu was chosen with love. So please enjoy the food—it was the most expensive part of the wedding. Eat slowly and savor our debt!</p>
   </div>
 </header>
 
@@ -163,11 +160,16 @@ footer {
   </div>
 </main>
 
+<div class="footer-note">
+  <p>Thank you for sharing in the joy of our first meal as a married couple. Cheers to love and laughter!</p>
+</div>
+
 <footer>
   &copy; 2025 Pratim & Debjani. All rights reserved.
 </footer>
 
 <script>
+// fireworks animation (unchanged)
 const canvas = document.getElementById('fireworks');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
@@ -253,6 +255,7 @@ class Sparkle {
 
 function animate(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
+
   if(Math.random()<0.05) fireworks.push(new Firework(random(50,canvas.width-50),canvas.height,random(100,canvas.height/2)));
   fireworks.forEach((f,i)=>{ f.update(); f.draw(); if(f.exploded) fireworks.splice(i,1); });
   particles.forEach((p,i)=>{ p.update(); p.draw(); if(p.alpha<=0) particles.splice(i,1); });
@@ -264,6 +267,7 @@ function animate(){
 
   requestAnimationFrame(animate);
 }
+
 animate();
 
 window.addEventListener('resize', ()=>{
