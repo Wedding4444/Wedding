@@ -48,7 +48,14 @@ header h1 {
 }
 
 header p { font-size: 1.1rem; margin-top: 0.5rem; }
-.info { margin-top: 1rem; font-size: 0.95rem; color: #eee; }
+
+.info { 
+  margin-top: 1rem; 
+  font-size: 0.85rem; 
+  color: #eee; 
+  text-align: center; 
+  line-height: 1.4; 
+}
 
 main {
   background-color: #fff;
@@ -111,7 +118,12 @@ footer {
   <h1 id="title">Pratim & Debjani</h1>
   <p>Thank you for being part of our Special day</p>
   <div class="info">
-    <p>Every dish on this menu was chosen with love. So please enjoy the food—it was the most expensive part of the wedding. Eat slowly and savor our debt!</p>
+    <p>
+      Every dish on this menu was chosen with love. So please enjoy the food—it was the most expensive part of the wedding. Eat slowly and savor our debt!
+    </p>
+    <p style="margin-top: 0.5rem;">
+      Thank you for sharing in the joy of our first meal as a married couple. Cheers to love and laughter!
+    </p>
   </div>
 </header>
 
@@ -221,7 +233,6 @@ class Particle {
   }
 }
 
-// sparkle effect for title
 class Sparkle {
   constructor(x,y){
     this.x=x+random(-80,80);
@@ -242,13 +253,10 @@ class Sparkle {
 
 function animate(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
-
-  // fireworks
   if(Math.random()<0.05) fireworks.push(new Firework(random(50,canvas.width-50),canvas.height,random(100,canvas.height/2)));
   fireworks.forEach((f,i)=>{ f.update(); f.draw(); if(f.exploded) fireworks.splice(i,1); });
   particles.forEach((p,i)=>{ p.update(); p.draw(); if(p.alpha<=0) particles.splice(i,1); });
 
-  // title sparkles
   const title = document.getElementById('title');
   const rect = title.getBoundingClientRect();
   if(Math.random()<0.1) sparkles.push(new Sparkle(rect.left+rect.width/2, rect.top+rect.height/2));
@@ -256,7 +264,6 @@ function animate(){
 
   requestAnimationFrame(animate);
 }
-
 animate();
 
 window.addEventListener('resize', ()=>{
@@ -266,6 +273,3 @@ window.addEventListener('resize', ()=>{
 </script>
 </body>
 </html>
-
-
-
