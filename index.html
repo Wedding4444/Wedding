@@ -102,9 +102,20 @@ footer {
 }
 
 footer .thank-you {
-  font-size: 0.85rem;
   color: black;
+}
+
+footer .thank-you .small-text {
+  font-size: 0.7rem;
+  display: block;
   margin-bottom: 0.3rem;
+}
+
+footer .thank-you .big-text {
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 footer .copyright {
@@ -118,6 +129,8 @@ footer .copyright {
   h2 { font-size: 1.5rem; }
   .menu-section h3 { font-size: 1.1rem; }
   li { font-size: 1rem; }
+  footer .thank-you .small-text { font-size: 0.6rem; }
+  footer .thank-you .big-text { font-size: 1rem; }
 }
 </style>
 </head>
@@ -167,7 +180,10 @@ footer .copyright {
 </main>
 
 <footer>
-  <p class="thank-you">I can't tell you VISIT AGAIN</p>
+  <p class="thank-you">
+    <span class="small-text">I can't tell you</span>
+    <span class="big-text">VISIT AGAIN</span>
+  </p>
   <p class="copyright">&copy; 2025 Pratim & Debjani. All rights reserved.</p>
 </footer>
 
@@ -279,6 +295,3 @@ window.addEventListener('resize', ()=>{
 </script>
 </body>
 </html>
-
-
-
