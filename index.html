@@ -9,7 +9,7 @@
 
 body{
   font-family:'Georgia',serif;
-  background:white; /* plain white background */
+  background:linear-gradient(to bottom,#0044cc,#87CEFA); /* unified gradient */
   color:#333;
   min-height:100vh;
   display:flex;
@@ -43,13 +43,13 @@ canvas{
 
 header{
   background:transparent;
-  color:#002366; /* all header text blue */
+  color:#fff;
   width:100%;
   text-align:center;
   padding:2rem 1rem 1rem;
   position:relative;
   z-index:2;
-  text-shadow:1px 1px 3px rgba(255,255,255,0.6);
+  text-shadow:1px 1px 3px rgba(0,0,0,0.4);
 }
 header h1{
   font-size:2.2rem;
@@ -62,7 +62,7 @@ header p{
 }
 header .sub-info{
   font-size:.85rem;
-  color:#002366;
+  color:#f8f8f8;
   margin-top:.3rem;
 }
 
@@ -112,14 +112,14 @@ li{
   padding-left:1.5rem;
   margin-bottom:.3rem;
   font-size:1.05rem;
-  color:black; /* food names are black */
+  color:black; /* food names are now black */
   text-shadow:1px 1px 2px #fff;
 }
 li::before{
   content:"●";
   position:absolute;
   left:0;
-  color:#d2691e; /* orange bullet */
+  color:#d2691e; /* orange bullet stays */
 }
 
 footer{
@@ -132,7 +132,7 @@ footer{
 footer .thank-you{color:black}
 footer .thank-you .small-text{font-size:.7rem;display:block;margin-bottom:.3rem}
 footer .thank-you .big-text{font-size:1.2rem;font-weight:bold;letter-spacing:1px;text-transform:uppercase}
-footer .copyright{font-size:.85rem;color:#002366}
+footer .copyright{font-size:.85rem;color:#fff}
 
 @media(max-width:480px){
   header h1{font-size:1.8rem}
@@ -150,7 +150,7 @@ footer .copyright{font-size:.85rem;color:#002366}
 
 <header>
   <h1 id="title">Pratim 💙 Debjani</h1>
-  <p>Thank you for sharing in the joy of our first meal as a married couple.</p>
+  <p>Thank you for sharing in the joy of our first meal as a married couple</p>
   <p class="sub-info">Every dish on this menu was chosen with Love. Cheers to Love and Laughter!</p>
 </header>
 
@@ -195,7 +195,7 @@ footer .copyright{font-size:.85rem;color:#002366}
     <span class="small-text">I can't tell you</span>
     <span class="big-text">VISIT AGAIN</span>
   </p>
-  <p class="copyright">&copy; 2025 Pratim & Debjani. All rights reserved.</p>
+  
 </footer>
 
 <script>
