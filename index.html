@@ -5,88 +5,129 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pratim & Debjani's Royal Wedding Menu</title>
 <style>
-* {box-sizing:border-box;margin:0;padding:0;}
-body {
-  font-family: 'Georgia', serif;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  overflow-x: hidden;
-  overflow-y: auto;
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Georgia',serif;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  overflow-x:hidden;
+  overflow-y:auto;
+  position:relative;
   background: linear-gradient(120deg,#fff5e6,#fdf1d3,#fff5e6);
-  background-size: 400% 400%;
+  background-size:400% 400%;
   animation: shimmerBG 20s ease-in-out infinite;
 }
-
-/* Background animation */
+/* shimmer background animation */
 @keyframes shimmerBG {
   0%{background-position:0% 50%;}
   50%{background-position:100% 50%;}
   100%{background-position:0% 50%;}
 }
 
-/* Fireworks canvas */
-canvas {position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;}
+/* Bride photo behind menu */
+#bride-photo{
+  content:"";
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:url("bride.jpg") center/cover no-repeat;
+  opacity:0.45;
+  filter:blur(0.5px);
+  z-index:0;
+}
 
-/* Header styling */
-header {
-  width: 100%;
-  text-align: center;
-  padding: 2rem 1rem 1rem;
-  position: relative;
-  z-index: 3;
+/* Floating golden sparkles behind menu */
+#sparkle-bg{
+  position:fixed;
+  top:0;left:0;width:100%;height:100%;overflow:hidden;pointer-events:none;z-index:1;
+}
+.sparkle{
+  position:absolute;
+  background: radial-gradient(circle, rgba(255,215,0,0.9) 0%, rgba(255,215,0,0.1) 70%, transparent 100%);
+  border-radius:50%;
+  opacity:0.6;
+  animation: floatSparkle linear infinite;
+}
+@keyframes floatSparkle{
+  0% {transform: translateY(0) scale(1); opacity:0.8;}
+  50% {opacity:1;}
+  100% {transform: translateY(-120vh) scale(1.3); opacity:0;}
+}
+
+/* Fireworks canvas */
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:9999;
+}
+
+/* Header */
+header{
+  width:100%;
+  text-align:center;
+  padding:2rem 1rem 1rem;
+  position:relative;
+  z-index:3;
   text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
 }
-header h1 {
-  font-size: 2.4rem;
-  display: inline-block;
-  background: #ffccd5;
-  border: 5px solid gold;
-  padding: 0.6rem 1.2rem;
-  border-radius: 15px;
-  box-shadow: 0 0 20px rgba(255,215,0,0.8);
+header h1{
+  font-size:2.4rem;
+  display:inline-block;
+  background:#ffccd5;
+  border:5px solid gold;
+  padding:0.6rem 1.2rem;
+  border-radius:15px;
+  box-shadow:0 0 20px rgba(255,215,0,0.8);
   animation: glowFrame 2s ease-in-out infinite alternate;
 }
-@keyframes glowFrame {
+@keyframes glowFrame{
   0% {box-shadow:0 0 15px rgba(255,215,0,0.6);}
   100% {box-shadow:0 0 25px rgba(255,215,0,1);}
 }
-header p { font-size:1.1rem; margin-top:0.5rem; color:#002366;}
-header .sub-info { font-size:0.9rem; color:#002366; margin-top:0.3rem;}
+header p{ font-size:1.1rem; margin-top:0.5rem; color:#002366;}
+header .sub-info{ font-size:0.9rem; color:#002366; margin-top:0.3rem;}
 
-/* Frosted menu card */
-main {
-  border-radius: 22px;
-  padding: 2rem;
-  max-width: 700px;
-  width: 95%;
-  margin: 2rem auto;
-  position: relative;
-  z-index: 2;
+/* Frosted menu panel */
+main{
+  border-radius:22px;
+  padding:2rem;
+  max-width:700px;
+  width:95%;
+  margin:2rem auto;
+  position:relative;
+  z-index:2;
   background: rgba(255,255,255,0.93);
   backdrop-filter: blur(14px);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-  border: 2px solid rgba(255,215,0,0.6);
+  box-shadow:0 8px 30px rgba(0,0,0,0.3);
+  border:2px solid rgba(255,215,0,0.6);
+  overflow:hidden;
 }
 
 /* Titles */
-h2 { color: #002366; text-align:center; font-size:2rem; margin-bottom:1rem; text-shadow:1px 1px 2px #fff;}
-.menu-section {margin-bottom:2rem;}
-.menu-section h3 {color:#2b1d6d; border-bottom:2px solid gold; padding-bottom:0.3rem; margin-bottom:0.7rem; font-size:1.3rem; text-shadow:1px 1px 2px #fff;}
-ul { list-style:none; padding-left:0; margin:0;}
-li { position:relative; padding-left:1.5rem; margin-bottom:0.4rem; font-size:1.1rem; color:#000; text-shadow:1px 1px 1px #fff;}
-li::before {content:"●"; position:absolute; left:0; color:#d2691e;}
+h2{ color:#002366; text-align:center; font-size:2rem; margin-bottom:1rem; text-shadow:1px 1px 2px #fff;}
+.menu-section{margin-bottom:2rem;}
+.menu-section h3{color:#2b1d6d; border-bottom:2px solid gold; padding-bottom:0.3rem; margin-bottom:0.7rem; font-size:1.3rem; text-shadow:1px 1px 2px #fff;}
+ul{ list-style:none; padding-left:0; margin:0;}
+li{ position:relative; padding-left:1.5rem; margin-bottom:0.4rem; font-size:1.1rem; color:#000; text-shadow:1px 1px 1px #fff;}
+li::before{content:"●"; position:absolute; left:0; color:#d2691e;}
 
 /* Footer */
-footer {margin-top:auto; text-align:center; padding:1.2rem; position:relative; z-index:2;}
-footer .thank-you {color:black;}
+footer{margin-top:auto; text-align:center; padding:1.2rem; position:relative; z-index:2;}
+footer .thank-you{color:black;}
 footer .thank-you .small-text{font-size:0.7rem;display:block;margin-bottom:0.3rem;}
 footer .thank-you .big-text{font-size:1.2rem;font-weight:bold;letter-spacing:1px;text-transform:uppercase;}
-footer .divider {height:2px; width:80px; background:gold; margin:0.5rem auto 0.5rem auto; border-radius:1px;}
+footer .divider{height:2px; width:80px; background:gold; margin:0.5rem auto 0.5rem auto; border-radius:1px;}
 
-/* Mobile adjustments */
+/* Mobile */
 @media(max-width:480px){
   header h1{font-size:2rem}
   main{padding:1.5rem}
@@ -99,6 +140,9 @@ footer .divider {height:2px; width:80px; background:gold; margin:0.5rem auto 0.5
 </style>
 </head>
 <body>
+
+<div id="bride-photo"></div>
+<div id="sparkle-bg"></div>
 <canvas id="fireworks"></canvas>
 
 <header>
@@ -109,7 +153,6 @@ footer .divider {height:2px; width:80px; background:gold; margin:0.5rem auto 0.5
 
 <main>
   <h2>Serving Menu</h2>
-
   <div class="menu-section">
     <h3>Main Course</h3>
     <ul>
@@ -130,7 +173,6 @@ footer .divider {height:2px; width:80px; background:gold; margin:0.5rem auto 0.5
       <li>Pass Pass</li>
     </ul>
   </div>
-
   <div class="menu-section">
     <h3>Stall</h3>
     <ul>
@@ -153,40 +195,41 @@ footer .divider {height:2px; width:80px; background:gold; margin:0.5rem auto 0.5
 </footer>
 
 <script>
-// Fireworks Script
-const canvas = document.getElementById('fireworks');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-let fireworks = [], particles = [];
-
+// Fireworks
+const canvas=document.getElementById('fireworks');
+const ctx=canvas.getContext('2d');
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+let fireworks=[],particles=[];
 function random(min,max){return Math.random()*(max-min)+min;}
-
-class Firework{
-  constructor(x,y,targetY){this.x=x;this.y=y;this.targetY=targetY;this.speed=random(2,4);this.exploded=false;}
-  update(){if(this.y>this.targetY)this.y-=this.speed;else if(!this.exploded){this.explode();this.exploded=true;}}
-  explode(){for(let i=0;i<30;i++)particles.push(new Particle(this.x,this.y));}
-  draw(){if(!this.exploded){ctx.beginPath();ctx.arc(this.x,this.y,2,0,Math.PI*2);ctx.fillStyle='white';ctx.fill();}}
-}
-class Particle{
-  constructor(x,y){this.x=x;this.y=y;this.speed=random(1,5);this.angle=random(0,Math.PI*2);this.gravity=0.05;this.alpha=1;this.color=`hsl(${random(0,360)},100%,50%)`;}
-  update(){this.speed*=0.98;this.x+=Math.cos(this.angle)*this.speed;this.y+=Math.sin(this.angle)*this.speed+this.gravity;this.alpha-=0.02;}
-  draw(){ctx.globalAlpha=this.alpha;ctx.beginPath();ctx.arc(this.x,this.y,2,0,Math.PI*2);ctx.fillStyle=this.color;ctx.fill();ctx.globalAlpha=1;}
-}
-
-function animate(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  if(Math.random()<0.05)fireworks.push(new Firework(random(50,canvas.width-50),canvas.height,random(100,canvas.height/2)));
-  fireworks.forEach((f,i)=>{f.update();f.draw();if(f.exploded)fireworks.splice(i,1);});
-  particles.forEach((p,i)=>{p.update();p.draw();if(p.alpha<=0)particles.splice(i,1);});
-  requestAnimationFrame(animate);
-}
+class Firework{constructor(x,y,targetY){this.x=x;this.y=y;this.targetY=targetY;this.speed=random(2,4);this.exploded=false;}
+update(){if(this.y>this.targetY)this.y-=this.speed;else if(!this.exploded){this.explode();this.exploded=true;}}
+explode(){for(let i=0;i<30;i++)particles.push(new Particle(this.x,this.y));}
+draw(){if(!this.exploded){ctx.beginPath();ctx.arc(this.x,this.y,2,0,Math.PI*2);ctx.fillStyle='white';ctx.fill();}}}
+class Particle{constructor(x,y){this.x=x;this.y=y;this.speed=random(1,5);this.angle=random(0,Math.PI*2);this.gravity=0.05;this.alpha=1;this.color=`hsl(${random(0,360)},100%,50%)`;}
+update(){this.speed*=0.98;this.x+=Math.cos(this.angle)*this.speed;this.y+=Math.sin(this.angle)*this.speed+this.gravity;this.alpha-=0.02;}
+draw(){ctx.globalAlpha=this.alpha;ctx.beginPath();ctx.arc(this.x,this.y,2,0,Math.PI*2);ctx.fillStyle=this.color;ctx.fill();ctx.globalAlpha=1;}}
+function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);
+if(Math.random()<0.05)fireworks.push(new Firework(random(50,canvas.width-50),canvas.height,random(100,canvas.height/2)));
+fireworks.forEach((f,i)=>{f.update();f.draw();if(f.exploded)fireworks.splice(i,1);});
+particles.forEach((p,i)=>{p.update();p.draw();if(p.alpha<=0)particles.splice(i,1);});
+requestAnimationFrame(animate);}
 animate();
+window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;});
 
-window.addEventListener('resize',()=>{
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-});
+// Golden Sparkles
+const sparkleBg=document.getElementById('sparkle-bg');
+const sparkleCount=35;
+for(let i=0;i<sparkleCount;i++){
+  const s=document.createElement('div');
+  s.classList.add('sparkle');
+  s.style.width=`${Math.random()*6+3}px`;
+  s.style.height=s.style.width;
+  s.style.left=`${Math.random()*100}%`;
+  s.style.top=`${Math.random()*100}%`;
+  s.style.animationDuration=`${Math.random()*10+10}s`;
+  sparkleBg.appendChild(s);
+}
 </script>
 </body>
 </html>
