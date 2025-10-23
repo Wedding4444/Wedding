@@ -2,18 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Pratim & Debjani's Wedding Menu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pratim & Debjani's Royal Wedding Menu</title>
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
+* {box-sizing:border-box;margin:0;padding:0;}
 body {
   font-family: 'Georgia', serif;
-  color: #333;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -21,188 +15,86 @@ body {
   justify-content: flex-start;
   overflow-x: hidden;
   overflow-y: auto;
-  position: relative;
-  background: linear-gradient(to bottom right, #fef6f9, #fceabb); /* elegant pastel background */
+  background: linear-gradient(120deg,#fff5e6,#fdf1d3,#fff5e6);
+  background-size: 400% 400%;
+  animation: shimmerBG 20s ease-in-out infinite;
 }
 
-/* Background layer that holds bride photo without interference */
-main::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url("bride.jpg") center/cover no-repeat;
-  opacity: 0.5;
-  filter: blur(0.5px);
-  z-index: 0;
+/* Background animation */
+@keyframes shimmerBG {
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
 }
 
-/* Canvas for fireworks (topmost layer) */
-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 9999;
-}
+/* Fireworks canvas */
+canvas {position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;}
 
 /* Header styling */
 header {
-  background: transparent;
-  color: #fff;
   width: 100%;
   text-align: center;
   padding: 2rem 1rem 1rem;
   position: relative;
   z-index: 3;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
 }
-
 header h1 {
-  font-size: 2.2rem;
-  margin: 0;
+  font-size: 2.4rem;
   display: inline-block;
-  background: pink;
-  border: 4px solid gold;
-  padding: 0.5rem 1rem;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+  background: #ffccd5;
+  border: 5px solid gold;
+  padding: 0.6rem 1.2rem;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(255,215,0,0.8);
+  animation: glowFrame 2s ease-in-out infinite alternate;
 }
-
-header p {
-  font-size: 1.1rem;
-  margin-top: 0.5rem;
-  color: #0044cc;
+@keyframes glowFrame {
+  0% {box-shadow:0 0 15px rgba(255,215,0,0.6);}
+  100% {box-shadow:0 0 25px rgba(255,215,0,1);}
 }
+header p { font-size:1.1rem; margin-top:0.5rem; color:#002366;}
+header .sub-info { font-size:0.9rem; color:#002366; margin-top:0.3rem;}
 
-header .sub-info {
-  font-size: 0.9rem;
-  color: #0044cc;
-  margin-top: 0.3rem;
-}
-
-/* Frosted white glass main panel */
+/* Frosted menu card */
 main {
-  border-radius: 20px;
-  padding: 1.8rem;
-  max-width: 650px;
+  border-radius: 22px;
+  padding: 2rem;
+  max-width: 700px;
   width: 95%;
   margin: 2rem auto;
   position: relative;
   z-index: 2;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+  background: rgba(255,255,255,0.93);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  border: 2px solid rgba(255,215,0,0.6);
 }
 
 /* Titles */
-h2 {
-  color: #002366;
-  text-align: center;
-  font-size: 1.9rem;
-  margin-bottom: 1rem;
-  text-shadow: 1px 1px 2px #fff;
-}
-
-/* Menu sections */
-.menu-section {
-  margin-bottom: 1.5rem;
-  position: relative;
-  z-index: 2;
-}
-
-.menu-section h3 {
-  color: #d2691e;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 0.25rem;
-  margin-bottom: 0.5rem;
-  font-size: 1.3rem;
-  text-shadow: 1px 1px 2px #fff;
-}
-
-/* Menu list */
-ul {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-  position: relative;
-  z-index: 2;
-}
-
-li {
-  position: relative;
-  padding-left: 1.5rem;
-  margin-bottom: 0.3rem;
-  font-size: 1.1rem;
-  color: black;
-  text-shadow: 1px 1px 2px #fff;
-}
-
-li::before {
-  content: "●";
-  position: absolute;
-  left: 0;
-  color: #d2691e;
-}
+h2 { color: #002366; text-align:center; font-size:2rem; margin-bottom:1rem; text-shadow:1px 1px 2px #fff;}
+.menu-section {margin-bottom:2rem;}
+.menu-section h3 {color:#2b1d6d; border-bottom:2px solid gold; padding-bottom:0.3rem; margin-bottom:0.7rem; font-size:1.3rem; text-shadow:1px 1px 2px #fff;}
+ul { list-style:none; padding-left:0; margin:0;}
+li { position:relative; padding-left:1.5rem; margin-bottom:0.4rem; font-size:1.1rem; color:#000; text-shadow:1px 1px 1px #fff;}
+li::before {content:"●"; position:absolute; left:0; color:#d2691e;}
 
 /* Footer */
-footer {
-  margin-top: auto;
-  text-align: center;
-  padding: 1rem;
-  position: relative;
-  z-index: 2;
-}
+footer {margin-top:auto; text-align:center; padding:1.2rem; position:relative; z-index:2;}
+footer .thank-you {color:black;}
+footer .thank-you .small-text{font-size:0.7rem;display:block;margin-bottom:0.3rem;}
+footer .thank-you .big-text{font-size:1.2rem;font-weight:bold;letter-spacing:1px;text-transform:uppercase;}
+footer .divider {height:2px; width:80px; background:gold; margin:0.5rem auto 0.5rem auto; border-radius:1px;}
 
-footer .thank-you {
-  color: black;
-}
-
-footer .thank-you .small-text {
-  font-size: 0.7rem;
-  display: block;
-  margin-bottom: 0.3rem;
-}
-
-footer .thank-you .big-text {
-  font-size: 1.2rem;
-  font-weight: bold;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-footer .copyright {
-  font-size: 0.85rem;
-  color: #fff;
-}
-
-/* Mobile friendly adjustments */
-@media (max-width: 480px) {
-  header h1 {
-    font-size: 1.8rem;
-  }
-  main {
-    padding: 1rem;
-  }
-  h2 {
-    font-size: 1.5rem;
-  }
-  .menu-section h3 {
-    font-size: 1.1rem;
-  }
-  li {
-    font-size: 1rem;
-  }
-  footer .thank-you .small-text {
-    font-size: 0.6rem;
-  }
-  footer .thank-you .big-text {
-    font-size: 1rem;
-  }
+/* Mobile adjustments */
+@media(max-width:480px){
+  header h1{font-size:2rem}
+  main{padding:1.5rem}
+  h2{font-size:1.6rem}
+  .menu-section h3{font-size:1.15rem}
+  li{font-size:1rem}
+  footer .thank-you .small-text{font-size:0.6rem}
+  footer .thank-you .big-text{font-size:1rem}
 }
 </style>
 </head>
@@ -217,6 +109,7 @@ footer .copyright {
 
 <main>
   <h2>Serving Menu</h2>
+
   <div class="menu-section">
     <h3>Main Course</h3>
     <ul>
@@ -252,6 +145,7 @@ footer .copyright {
 </main>
 
 <footer>
+  <div class="divider"></div>
   <p class="thank-you">
     <span class="small-text">I can't tell you</span>
     <span class="big-text">VISIT AGAIN</span>
@@ -259,92 +153,37 @@ footer .copyright {
 </footer>
 
 <script>
+// Fireworks Script
 const canvas = document.getElementById('fireworks');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-let fireworks = [], particles = [], sparkles = [];
+let fireworks = [], particles = [];
 
-function random(min, max) {
-  return Math.random() * (max - min) + min;
+function random(min,max){return Math.random()*(max-min)+min;}
+
+class Firework{
+  constructor(x,y,targetY){this.x=x;this.y=y;this.targetY=targetY;this.speed=random(2,4);this.exploded=false;}
+  update(){if(this.y>this.targetY)this.y-=this.speed;else if(!this.exploded){this.explode();this.exploded=true;}}
+  explode(){for(let i=0;i<30;i++)particles.push(new Particle(this.x,this.y));}
+  draw(){if(!this.exploded){ctx.beginPath();ctx.arc(this.x,this.y,2,0,Math.PI*2);ctx.fillStyle='white';ctx.fill();}}
+}
+class Particle{
+  constructor(x,y){this.x=x;this.y=y;this.speed=random(1,5);this.angle=random(0,Math.PI*2);this.gravity=0.05;this.alpha=1;this.color=`hsl(${random(0,360)},100%,50%)`;}
+  update(){this.speed*=0.98;this.x+=Math.cos(this.angle)*this.speed;this.y+=Math.sin(this.angle)*this.speed+this.gravity;this.alpha-=0.02;}
+  draw(){ctx.globalAlpha=this.alpha;ctx.beginPath();ctx.arc(this.x,this.y,2,0,Math.PI*2);ctx.fillStyle=this.color;ctx.fill();ctx.globalAlpha=1;}
 }
 
-class Firework {
-  constructor(x, y, targetY) {
-    this.x = x;
-    this.y = y;
-    this.targetY = targetY;
-    this.speed = random(2, 4);
-    this.exploded = false;
-  }
-  update() {
-    if (this.y > this.targetY) this.y -= this.speed;
-    else if (!this.exploded) {
-      this.explode();
-      this.exploded = true;
-    }
-  }
-  explode() {
-    for (let i = 0; i < 30; i++) particles.push(new Particle(this.x, this.y));
-  }
-  draw() {
-    if (!this.exploded) {
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
-      ctx.fillStyle = 'white';
-      ctx.fill();
-    }
-  }
-}
-
-class Particle {
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
-    this.speed = random(1, 5);
-    this.angle = random(0, Math.PI * 2);
-    this.gravity = 0.05;
-    this.alpha = 1;
-    this.color = `hsl(${random(0, 360)}, 100%, 50%)`;
-  }
-  update() {
-    this.speed *= 0.98;
-    this.x += Math.cos(this.angle) * this.speed;
-    this.y += Math.sin(this.angle) * this.speed + this.gravity;
-    this.alpha -= 0.02;
-  }
-  draw() {
-    ctx.globalAlpha = this.alpha;
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
-    ctx.fillStyle = this.color;
-    ctx.fill();
-    ctx.globalAlpha = 1;
-  }
-}
-
-function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  if (Math.random() < 0.05)
-    fireworks.push(new Firework(random(50, canvas.width - 50), canvas.height, random(100, canvas.height / 2)));
-
-  fireworks.forEach((f, i) => {
-    f.update();
-    f.draw();
-    if (f.exploded) fireworks.splice(i, 1);
-  });
-
-  particles.forEach((p, i) => {
-    p.update();
-    p.draw();
-    if (p.alpha <= 0) particles.splice(i, 1);
-  });
-
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  if(Math.random()<0.05)fireworks.push(new Firework(random(50,canvas.width-50),canvas.height,random(100,canvas.height/2)));
+  fireworks.forEach((f,i)=>{f.update();f.draw();if(f.exploded)fireworks.splice(i,1);});
+  particles.forEach((p,i)=>{p.update();p.draw();if(p.alpha<=0)particles.splice(i,1);});
   requestAnimationFrame(animate);
 }
 animate();
 
-window.addEventListener('resize', () => {
+window.addEventListener('resize',()=>{
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 });
