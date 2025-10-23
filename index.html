@@ -49,23 +49,33 @@ header{
   z-index:3;
   text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
 }
-.header-names{
-  font-size:2.4rem;
+.header-names-frame{
+  display:inline-block;
+  padding:0.6rem 1.2rem;
+  border:5px solid gold;
+  border-radius:15px;
+  box-shadow:0 0 20px rgba(255,215,0,0.8);
+  animation: glowFrame 2s ease-in-out infinite alternate;
+  background:#ffccd5;
+}
+.header-names-frame span{
+  text-shadow:0 0 10px;
   font-weight:bold;
 }
-.header-names span{
-  text-shadow:0 0 10px;
-}
-.header-names .pratim, .header-names .debjani{
+.header-names-frame .pratim, .header-names-frame .debjani{
   color:red;
   animation: glowRed 2s ease-in-out infinite alternate;
 }
-.header-names .heart{
+.header-names-frame .heart{
   color:#00f;
   animation: glowBlue 2s ease-in-out infinite alternate;
 }
 @keyframes glowRed{0%{text-shadow:0 0 8px #ff0000;}100%{text-shadow:0 0 18px #ff4444;}}
 @keyframes glowBlue{0%{text-shadow:0 0 8px #00f;}100%{text-shadow:0 0 18px #33f;}}
+@keyframes glowFrame{
+  0% {box-shadow:0 0 15px rgba(255,215,0,0.6);}
+  100% {box-shadow:0 0 25px rgba(255,215,0,1);}
+}
 
 header p{ font-size:1.1rem; margin-top:0.5rem; color:#002366;}
 header .sub-info{ font-size:0.9rem; color:#002366; margin-top:0.3rem;}
@@ -79,7 +89,7 @@ main{
   margin:2rem auto;
   position:relative;
   z-index:2;
-  background: rgba(255,255,255,0.87); /* more visible bride photo */
+  background: rgba(255,255,255,0.87); /* slightly more visible bride photo */
   backdrop-filter: blur(12px);
   box-shadow:0 8px 30px rgba(0,0,0,0.3);
   border:2px solid rgba(255,215,0,0.6);
@@ -91,7 +101,7 @@ main::before{
   top:0; left:0;
   width:100%; height:100%;
   background:url("bride.jpg") center/cover no-repeat;
-  opacity:0.45; /* slightly more visible */
+  opacity:0.45; /* bride photo slightly more visible */
   z-index:0;
   border-radius:22px;
 }
@@ -116,7 +126,7 @@ footer .divider{height:2px; width:80px; background:gold; margin:0.5rem auto 0.5r
 
 /* Mobile */
 @media(max-width:480px){
-  header .header-names{font-size:2rem}
+  header .header-names-frame{font-size:2rem}
   main{padding:1.5rem}
   h2{font-size:1.6rem}
   .menu-section h3{font-size:1.15rem}
@@ -131,7 +141,7 @@ footer .divider{height:2px; width:80px; background:gold; margin:0.5rem auto 0.5r
 <canvas id="fireworks"></canvas>
 
 <header>
-  <div class="header-names">
+  <div class="header-names-frame">
     <span class="pratim">Pratim</span> <span class="heart">💙</span> <span class="debjani">Debjani</span>
   </div>
   <p>Thank you for sharing in the joy of our first meal as a married couple</p>
